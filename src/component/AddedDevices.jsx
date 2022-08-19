@@ -1,9 +1,9 @@
 import { Col, Divider, Row } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import DeviceCamCard from "./cards/DeviceCamCard";
 
-function AddedDevices({
-    devices = [
+function AddedDevices() {
+    const [devices, setDevicelist] =  useState([
         {
             id: 0,
             type: "null",
@@ -32,8 +32,14 @@ function AddedDevices({
             id: 6,
             type: "Camera",
         },
-    ]
-}) {
+    ])
+    function removeCard (cardid) {
+        const newCards= devices.filter(c => c.id !== cardid)
+        setDevicelist(newCards)
+    }
+    
+        
+    
     return (
         <div>
             {" "}
@@ -44,8 +50,10 @@ function AddedDevices({
                 {devices.map((device) => {
                     if (device.id !== 0)
                         return (
-                            <Col key={device.id} className="gutter-row" span={6} flex="1">
-                                <DeviceCamCard key={device.id} device={device} />
+                            <Col key={device.id} className="gutter-row" span={6} flex="1">                              
+                                <DeviceCamCard key={device.id} device={device}  deviceList ={devices}
+                                removeCard = {removeCard}
+                                 />
                             </Col>
                         );
                 })}

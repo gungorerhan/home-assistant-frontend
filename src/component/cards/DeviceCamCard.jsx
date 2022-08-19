@@ -1,5 +1,6 @@
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { VideoCameraOutlined } from "@ant-design/icons";
+import AddedDevices from "../AddedDevices";
 import { Avatar, Card } from "antd";
 
 const { Meta } = Card;
@@ -12,11 +13,9 @@ const deleteCard = () => {
 const editCard = () => {
     console.log("edit card!!!");
 };
-const DeviceCamCard = ({device}) => (
-
+const DeviceCamCard = ({ device, setDevicelist, removeCard, deviceList }) => (
     <Card
-    
-    //pop up card modal
+        //pop up card modal
         onClick={() => clickCard()}
         hoverable
         itemID={device.id}
@@ -26,8 +25,22 @@ const DeviceCamCard = ({device}) => (
         type="inner"
         cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
         //pop up delete and edit modals
-        actions={[<EditOutlined key="edit"  onClick={event => { event.stopPropagation(); editCard()}}/>, 
-        <DeleteOutlined key="delete"  onClick={event => { event.stopPropagation(); deleteCard()}} />]}
+        actions={[
+            <EditOutlined
+                key="edit"
+                onClick={(event) => {
+                    event.stopPropagation();
+                    editCard();
+                }}
+            />,
+            <DeleteOutlined
+                key="delete"
+                onClick={(event) => {
+                    event.stopPropagation();
+                    removeCard(device.id);
+                }}
+            />,
+        ]}
     >
         <div style={{ height: "100%", width: "100%" }}>
             <Meta

@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import { Col, Divider, Layout, Row } from "antd";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
 import AddDeviceModal from "./component/AddDeviceModal";
@@ -16,7 +16,7 @@ const App = () => {
                 <div>
                     <Row >
                         <Col span={6 } flex="1">
-                            <Divider orientation="center">Wellcome</Divider>
+                            <Divider orientation="center">Welcome</Divider>
                             <Divider orientation="center">Add Device</Divider>
                             <AddDeviceModal></AddDeviceModal>
                         </Col>
