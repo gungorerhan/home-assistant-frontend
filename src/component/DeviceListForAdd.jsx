@@ -1,8 +1,6 @@
 import { Card } from "antd";
 import React, { useState } from "react";
-import AddedDevices from "./AddedDevices";
 
-import DeviceCamCard from "./cards/DeviceCamCard";
 const tabList = [
     {
         key: "tab1",

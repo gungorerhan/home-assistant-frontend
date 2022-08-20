@@ -1,15 +1,12 @@
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { VideoCameraOutlined } from "@ant-design/icons";
-import AddedDevices from "../AddedDevices";
 import { Avatar, Card } from "antd";
 
 const { Meta } = Card;
 const clickCard = () => {
     console.log("click card!!!");
 };
-const deleteCard = () => {
-    console.log("delete card!!!");
-};
+
 const editCard = () => {
     console.log("edit card!!!");
 };
