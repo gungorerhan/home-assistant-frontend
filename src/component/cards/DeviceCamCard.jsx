@@ -3,17 +3,11 @@ import { VideoCameraOutlined } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 
 const { Meta } = Card;
-const clickCard = () => {
-    console.log("click card!!!");
-};
 
-const editCard = () => {
-    console.log("edit card!!!");
-};
-const DeviceCamCard = ({ device, setDevicelist, removeCard, deviceList }) => (
+const DeviceCamCard = ({ device, removeCard, editCard, controlCard }) => (
     <Card
         //pop up card modal
-        onClick={() => clickCard()}
+        onClick={() => controlCard(device.id)}
         hoverable
         itemID={device.id}
         style={{ width: "100%", height: "100%", boxSizing: "border-box" }}
@@ -27,7 +21,7 @@ const DeviceCamCard = ({ device, setDevicelist, removeCard, deviceList }) => (
                 key="edit"
                 onClick={(event) => {
                     event.stopPropagation();
-                    editCard();
+                    editCard(device.id);
                 }}
             />,
             <DeleteOutlined
@@ -42,7 +36,7 @@ const DeviceCamCard = ({ device, setDevicelist, removeCard, deviceList }) => (
         <div style={{ height: "100%", width: "100%" }}>
             <Meta
                 avatar={<Avatar icon={<VideoCameraOutlined />} />}
-                title={device.type}
+                title={device.name}
                 headstyle={{ backgroundColor: "#E6ECF0" }}
                 bodystyle={{ padding: "5px" }}
             />

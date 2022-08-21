@@ -1,4 +1,4 @@
-import { Col, Divider, Row, Modal } from "antd";
+import { Col, Divider, Row, Modal, Input } from "antd";
 import React, { useState } from "react";
 import DeviceCamCard from "./cards/DeviceCamCard";
 
@@ -7,45 +7,45 @@ function AddedDevices() {
     const [devices, setDevicelist] = useState([
         {
             id: 0,
-            type: "null",
+            name: "null",
         },
         {
             id: 1,
-            type: "Camera 1",
+            name: "Camera 1",
         },
         {
             id: 2,
-            type: "Camera 2",
+            name: "Camera 2",
         },
         {
             id: 3,
-            type: "Camera 3",
+            name: "Camera 3",
         },
         {
             id: 4,
-            type: "Camera 4",
+            name: "Camera 4",
         },
         {
             id: 5,
-            type: "Camera 5",
+            name: "Camera 5",
         },
         {
             id: 6,
-            type: "Camera 6",
+            name: "Camera 6",
         },
     ]);
+    const [funcControl, setFuncControl] = useState();
     //remove modal
-    const [isRemoveModalVisible, setIsRemoceModalVisible] = useState(false);
+    const [isRemoveModalVisible, setIsRemoveModalVisible] = useState(false);
 
     const showRemoveModal = () => {
-        setIsRemoceModalVisible(true);
+        setIsRemoveModalVisible(true);
     };
 
     const removeCancel = () => {
-        setIsRemoceModalVisible(false);
+        setIsRemoveModalVisible(false);
         setFuncControl("0");
     };
-    const [funcControl, setFuncControl] = useState();
 
     function removeCard(cardid) {
         showRemoveModal();
@@ -54,24 +54,61 @@ function AddedDevices() {
     function removeOkay() {
         const newCards = devices.filter((c) => c.id !== funcControl);
         setDevicelist(newCards);
-        setIsRemoceModalVisible(false);
+        setIsRemoveModalVisible(false);
         setFuncControl("0");
     }
     //edit modal
-    function editCard(cardid)
-    {
-
+    const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+    const showEditModal = () => {
+        setIsEditModalVisible(true);
+    };
+    const editCancel = () => {
+        setIsEditModalVisible(false);
+        setFuncControl("0");
+    };
+    function editCard(cardid) {
+        showEditModal();
+        setFuncControl(cardid);
     }
-    function editOkay()
-    {
-
+    function editOkay() {
+        setIsEditModalVisible(false);
+        setFuncControl("0");
+        
+    }
+    //control modal
+    const [isControlModalVisible, setIsControlModalVisible] = useState(false);
+    const showControlModal = () => {
+        setIsControlModalVisible(true);
+    };
+    const controlCancel = () => {
+        setIsControlModalVisible(false);
+        setFuncControl("0");
+    };
+    function controlCard(cardid) {
+        showControlModal();
+        setFuncControl(cardid);
+    }
+    function controlOkay() {
+        setIsControlModalVisible(false);
+        setFuncControl("0");
     }
 
     return (
         <div>
             {/* remove modal */}
-            <Modal title="Delete Warning" visible={isRemoveModalVisible} onOk={removeOkay} onCancel={removeCancel}>              
-                <p>"{devices[funcControl]?.type}" do you wanna delete this device?</p>
+            <Modal title="Delete Warning" visible={isRemoveModalVisible} onOk={removeOkay} onCancel={removeCancel}>
+                <p>"{devices[funcControl]?.name}" do you wanna delete this device?</p>
+            </Modal>
+            {/* edit modal */}
+            <Modal title={"Device: " +devices[funcControl]?.name } visible={isEditModalVisible} onOk={editOkay} onCancel={editCancel}>
+                <p> Change Name</p>
+                <Input placeholder={devices[funcControl]?.name} />
+                {/* other edit settings for device types */}
+            </Modal>
+            {/* control modal */}
+            <Modal title={"Device: " +devices[funcControl]?.name } visible={isControlModalVisible} onOk={controlOkay} onCancel={controlCancel}>
+                <p> {devices[funcControl]?.name}</p>
+                {/* other control settings for device types */}
             </Modal>
             <Divider orientation="center">Devices</Divider>
             {/* test objects. */}
@@ -86,6 +123,8 @@ function AddedDevices() {
                                     device={device}
                                     deviceList={devices}
                                     removeCard={removeCard}
+                                    editCard = {editCard}
+                                    controlCard = {controlCard}
                                 />
                             </Col>
                         );
