@@ -3,11 +3,11 @@ import React from "react";
 import { Col, Divider, Layout, Row } from "antd";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
 import AddDeviceModal from "./component/AddDeviceModal";
-import AddedDevices from "./component/AddedDevices";
+import DeviceList from "./component/DeviceList";
 
 const App = () => {
     
-    // need solutions for adding and romoving
+    // need solutions for adding 
     return (
         <div>
             <Layout>
@@ -22,7 +22,7 @@ const App = () => {
                         </Col>
 
                         <Col span={18}>
-                            <AddedDevices></AddedDevices>
+                            <DeviceList></DeviceList>
                         </Col>
                     </Row>
                 </div>

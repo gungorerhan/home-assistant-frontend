@@ -26,7 +26,7 @@ const contentList = {
     tab4: <p>Kitchen</p>,
 };
 
-const DevicelistForAdd = () => {
+const SaveUpdateDeviceModal = () => {
     const [activeTabKey1, setActiveTabKey1] = useState("tab1");
 
     const onTab1Change = (key) => {
@@ -44,10 +44,8 @@ const DevicelistForAdd = () => {
                 tabList={tabList}
                 activeTabKey={activeTabKey1}
                 onTabChange={(key) => {
-                    onTab1Change(key);
-                    
-                }}
-            >
+                    onTab1Change(key);                   
+                }}           >
                 {contentList[activeTabKey1]}
                 
             </Card>
@@ -55,4 +53,4 @@ const DevicelistForAdd = () => {
     );
 };
 
-export default DevicelistForAdd;
+export default SaveUpdateDeviceModal;

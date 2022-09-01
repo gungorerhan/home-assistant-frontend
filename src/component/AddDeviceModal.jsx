@@ -1,7 +1,7 @@
 import { Button, Input, Modal } from "antd";
 import React, { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
-import DevicelistForAdd from "./DeviceListForAdd";
+import SaveUpdateDeviceModal from "./SaveUpdateDeviceModal";
 const AddDeviceModal = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -10,7 +10,7 @@ const AddDeviceModal = () => {
     };
 
     const handleOk = () => {
-        setIsModalVisible(false);
+        setIsModalVisible(false);     
     };
 
     const handleCancel = () => {
@@ -36,7 +36,7 @@ const AddDeviceModal = () => {
             <p> Put a device name</p>
                 <Input placeholder="Device Name" />
                 
-                <DevicelistForAdd></DevicelistForAdd>
+                <SaveUpdateDeviceModal></SaveUpdateDeviceModal>
             </Modal>
             
         </>
