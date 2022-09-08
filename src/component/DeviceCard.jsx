@@ -18,14 +18,15 @@ const DeviceCard = ({ device, editCard, controlCard, refreshCallback }) => {
             onOk: onDelete,
         });
     };
+    
     const onDelete = () => {
-        DeviceApi.deleteDevice(device.id, refreshCallback, "Device deleted");
+        DeviceApi.deleteDevice(device.id, refreshCallback,device.name + " deleted");
         
     };
     return (
+        
         <Card
-            //pop up card modal
-            onClick={() => controlCard(device.id)}
+            onClick={() => controlCard(device)}
             hoverable
             itemID={device.id}
             style={{ width: "100%", height: "100%", boxSizing: "border-box" }}
@@ -33,20 +34,19 @@ const DeviceCard = ({ device, editCard, controlCard, refreshCallback }) => {
             bodystyle={{ padding: "5px" }}
             type="inner"
             cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
-            //pop up delete and edit modals
             actions={[
                 <EditOutlined
                     key="edit"
                     onClick={(event) => {
                         event.stopPropagation();
-                        editCard(device.id);
+                        editCard(device);
                     }}
                 />,
                 <DeleteOutlined
                     key="delete"
                     onClick={(event) => {
                         event.stopPropagation();
-                        removeCard(device.id);
+                        removeCard();
                     }}
                 />,
             ]}
@@ -60,6 +60,7 @@ const DeviceCard = ({ device, editCard, controlCard, refreshCallback }) => {
                 />
             </div>
         </Card>
+        
     );
 };
 
