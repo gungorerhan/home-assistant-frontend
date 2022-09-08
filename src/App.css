@@ -1,0 +1,12 @@
+@import '~antd/dist/antd.css';
+.btnADD {
+    height: auto;
+    width: auto;
+    background-color: #f29544;
+    border-color: #f29544;
+    font-weight: 600;
+    padding: 10px 20px;
+    margin: 0 0 10px 5px;
+    display: inline-block;
+    white-space: nowrap;
+}
